@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pre-Matrícula ENFA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #f0f4ff, #ffeaea);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .side-image {
+      position: absolute;
+      top: 50%;
+      width: 280px;   /* Más ancho */
+      height: 160px;  /* Más alto */
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(-50%);
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.15));
+    }
+
+    .left-img {
+      left: 10px;
+    }
+
+    .right-img {
+      right: 10px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .logo {
+      width: 140px;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.3s;
+    }
+
+    h1 {
+      margin-bottom: 2rem;
+      color: #d71920;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      text-align: left;
+      font-weight: 600;
+      color: #1d3557;
+      font-size: 1rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid #ccc;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      transition: border-color 0.3s, background-color 0.3s;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #d71920;
+      background-color: #fff5f5;
+    }
+
+    .error {
+      border-color: #e74c3c !important;
+      background-color: #fdecea;
+    }
+
+    .message {
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      min-height: 1.5em;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1.5px solid #c3e6cb;
+    }
+
+    .message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1.5px solid #f5c6cb;
+    }
+
+    button {
+      width: 100%;
+      padding: 1.05rem;
+      background: #1d3557;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      user-select: none;
+    }
+
+    button:hover:not(:disabled) {
+      background: #143048;
+      transform: scale(1.03);
+    }
+
+    button:disabled {
+      background: #555a6e;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .side-image {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img
+    src="XRecorder_15112023_200356.jpg"
+    class="side-image left-img"
+    alt="Decoración izquierda"
+  />
+  <img
+    src="WhatsApp Image 2024-02-02 at 9.59.59 AM.png"
+    class="side-image right-img"
+    alt="Decoración derecha"
+  />
+
+  <div class="card">
+    <img class="logo" src="ENFA-removebg-preview.png" alt="Logo ENFA" />
+    <h1>Pre-Matrícula ENFA</h1>
+
+    <form id="form-cita" novalidate>
+      <label for="nombre">Nombre y Apellidos</label>
+      <input type="text" name="nombre" id="nombre" required />
+
+      <label for="ci">Número de CI</label>
+      <input type="text" name="ci" id="ci" required />
+
+      <label for="sexo">Sexo</label>
+      <select name="sexo" id="sexo" required>
+        <option value="">Selecciona sexo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      <label for="provincia">Provincia</label>
+      <select name="provincia" id="provincia" required>
+        <option value="">Selecciona provincia</option>
+        <option value="Artemisa">Artemisa</option>
+        <option value="La Habana">La Habana</option>
+        <option value="Mayabeque">Mayabeque</option>
+        <option value="Matanzas">Matanzas</option>
+        <option value="Villa Clara">Villa Clara</option>
+        <option value="Cienfuegos">Cienfuegos</option>
+        <option value="Ciego de Ávila">Ciego de Ávila</option>
+        <option value="Camagüey">Camagüey</option>
+        <option value="Holguín">Holguín</option>
+        <option value="Santiago de Cuba">Santiago de Cuba</option>
+      </select>
+
+      <label for="municipio">Municipio</label>
+      <select name="municipio" id="municipio" required>
+        <option value="">Selecciona municipio</option>
+      </select>
+
+      <label for="ipu">IPU</label>
+      <input type="text" name="ipu" id="ipu" required />
+
+      <button type="submit">Enviar</button>
+      <div id="message" class="message" style="display: none;"></div>
+    </form>
+  </div>
+
+  <script><script>
+  const provinciasMunicipios = {
+    // ... tu lista de provincias y municipios, igual que antes
+  };
+
+  const form = document.getElementById("form-cita");
+  const messageDiv = document.getElementById("message");
+  const provinciaSelect = document.getElementById("provincia");
+  const municipioSelect = document.getElementById("municipio");
+  const logo = document.querySelector(".logo");
+  const submitButton = form.querySelector('button[type="submit"]');
+  const ciInput = document.getElementById("ci");
+
+  let cisValidos = [];
+
+  // Cargar archivo de CIs válidos al iniciar
+  fetch("cis-validos.txt")
+    .then(response => response.text())
+    .then(text => {
+      cisValidos = text.split(/\r?\n/).map(ci => ci.trim()).filter(ci => ci.length > 0);
+      console.log("Lista de CI válidos cargada:", cisValidos.length, "entradas");
+    })
+    .catch(err => {
+      console.error("Error cargando cis-validos.txt:", err);
+    });
+
+  provinciaSelect.addEventListener("change", () => {
+    const provincia = provinciaSelect.value;
+    municipioSelect.innerHTML = '<option value="">Selecciona municipio</option>';
+    if (provinciasMunicipios[provincia]) {
+      provinciasMunicipios[provincia].forEach((m) => {
+        const option = document.createElement("option");
+        option.value = m;
+        option.textContent = m;
+        municipioSelect.appendChild(option);
+      });
+    }
+  });
+
+  form.querySelectorAll("input, select").forEach((input) => {
+    input.addEventListener("input", () => {
+      if (logo.style.display === "none") {
+        logo.style.display = "block";
+      }
+      messageDiv.style.display = "none";
+      messageDiv.textContent = "";
+      messageDiv.className = "message";
+    });
+  });
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    messageDiv.style.display = "none";
+    messageDiv.textContent = "";
+    messageDiv.className = "message";
+    const inputs = form.querySelectorAll("input, select");
+    inputs.forEach((input) => input.classList.remove("error"));
+
+    let isValid = true;
+
+    inputs.forEach((input) => {
+      if (!input.value.trim()) {
+        input.classList.add("error");
+        isValid = false;
+      }
+    });
+
+    // Validar CI: solo números y longitud 7 a 11
+    const ciValue = ciInput.value.trim();
+    const ciRegex = /^\d{7,11}$/;
+    if (!ciRegex.test(ciValue)) {
+      ciInput.classList.add("error");
+      isValid = false;
+    }
+
+    // Validar que el CI esté en la lista
+    if (!cisValidos.includes(ciValue)) {
+      ciInput.classList.add("error");
+      isValid = false;
+      messageDiv.textContent = "❌ El número de CI no está registrado en el sistema.";
+      messageDiv.classList.add("error");
+      messageDiv.style.display = "block";
+      return;
+    }
+
+    if (!isValid) {
+      messageDiv.textContent =
+        "❌ Por favor completa todos los campos correctamente. CI debe tener solo números (7-11 dígitos).";
+      messageDiv.classList.add("error");
+      messageDiv.style.display = "block";
+      return;
+    }
+
+    const data = new FormData(form);
+    const values = Object.fromEntries(data.entries());
+
+    messageDiv.textContent = "⏳ Enviando...";
+    messageDiv.classList.remove("error", "success");
+    messageDiv.style.display = "block";
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzIxV3d32DK6aIDMbiPeJp3_UCrWcSAy01jObJ-jYdY5m_s6tF_9xSnXs9EiXDMxGeqdA/exec",
+        {
+          method: "POST",
+          body: new URLSearchParams(values),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        messageDiv.textContent = "✅ Te esperamos. ¡Nos vemos pronto!";
+        messageDiv.classList.add("success");
+        form.reset();
+        logo.style.display = "none";
+      } else {
+        messageDiv.textContent = "⚠️ Ocurrió un error al enviar el formulario.";
+        messageDiv.classList.add("error");
+      }
+    } catch (error) {
+      messageDiv.textContent = "⚠️ No se pudo conectar con el servidor.";
+      messageDiv.classList.add("error");
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+</script>
+
+    const provinciasMunicipios = {
+      Artemisa: [
+        "Artemisa",
+        "Bahía Honda",
+        "Bauta",
+        "Caimito",
+        "Candelaria",
+        "Guanajay",
+        "Güira de Melena",
+        "Mariel",
+        "San Antonio de los Baños",
+        "San Cristóbal",
+      ],
+      "La Habana": [
+        "Arroyo Naranjo",
+        "Boyeros",
+        "Centro Habana",
+        "Cerro",
+        "Cotorro",
+        "Diez de Octubre",
+        "Guanabacoa",
+        "Habana del Este",
+        "Habana Vieja",
+        "La Lisa",
+        "Marianao",
+        "Playa",
+        "Plaza de la Revolución",
+        "Regla",
+        "San Miguel del Padrón",
+      ],
+      Mayabeque: [
+        "Batabanó",
+        "Bejucal",
+        "Güines",
+        "Jaruco",
+        "Madruga",
+        "Melena del Sur",
+        "Nueva Paz",
+        "Quivicán",
+        "San José de las Lajas",
+        "San Nicolás",
+      ],
+      Matanzas: [
+        "Cárdenas",
+        "César",
+        "Colón",
+        "Jagüey Grande",
+        "Jovellanos",
+        "Limonar",
+        "Los Arabos",
+        "Martí",
+        "Matanzas",
+        "Pedro Betancourt",
+        "Perico",
+        "Unín de Reyes",
+      ],
+      "Villa Clara": [
+        "Camajuaní",
+        "Caibarién",
+        "Cifuentes",
+        "Corralillo",
+        "Encrucijada",
+        "Manicaragua",
+        "Placetas",
+        "Quemado de Güines",
+        "Ranchuelo",
+        "Remedios",
+        "Sagua la Grande",
+        "Santa Clara",
+      ],
+      Cienfuegos: [
+        "Aguada de Pasajeros",
+        "Cienfuegos",
+        "Cruces",
+        "Cumanayagua",
+        "Lajas",
+        "Palmira",
+        "Rodas",
+      ],
+      "Ciego de Ávila": [
+        "Baraguá",
+        "Bolivia",
+        "Chambas",
+        "Ciego de Ávila",
+        "Ciro Redondo",
+        "Florencia",
+        "Majagua",
+        "Morón",
+        "Primero de Enero",
+        "Venezuela",
+      ],
+      Camagüey: [
+        "Camagüey",
+        "Carlos Manuel de Céspedes",
+        "Esmeralda",
+        "Florida",
+        "Guaímaro",
+        "Jimaguayú",
+        "Minas",
+        "Najasa",
+        "Nuevitas",
+        "Santa Cruz del Sur",
+        "Sibanicú",
+        "Vertientes",
+      ],
+      Holguín: [
+        "Antilla",
+        "Báguanos",
+        "Banes",
+        "Cacocum",
+        "Calixto García",
+        "Cueto",
+        "Frank País",
+        "Gibara",
+        "Holguín",
+        "Mayarí",
+        "Moa",
+        "Rafael Freyre",
+        "Sagua de Tánamo",
+        "Urbano Noris",
+      ],
+      "Santiago de Cuba": [
+        "Contramaestre",
+        "Guamá",
+        "Mella",
+        "Palma Soriano",
+        "San Luis",
+        "Santiago de Cuba",
+        "Segundo Frente",
+        "Songo-La Maya",
+        "Tercer Frente",
+      ],
+    };
+
+    const form = document.getElementById("form-cita");
+    const messageDiv = document.getElementById("message");
+    const provinciaSelect = document.getElementById("provincia");
+    const municipioSelect = document.getElementById("municipio");
+    const logo = document.querySelector(".logo");
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    provinciaSelect.addEventListener("change", () => {
+      const provincia = provinciaSelect.value;
+      municipioSelect.innerHTML = '<option value="">Selecciona municipio</option>';
+      if (provinciasMunicipios[provincia]) {
+        provinciasMunicipios[provincia].forEach((m) => {
+          const option = document.createElement("option");
+          option.value = m;
+          option.textContent = m;
+          municipioSelect.appendChild(option);
+        });
+      }
+    });
+
+    form.querySelectorAll("input, select").forEach((input) => {
+      input.addEventListener("input", () => {
+        if (logo.style.display === "none") {
+          logo.style.display = "block";
+        }
+        messageDiv.style.display = "none";
+        messageDiv.textContent = "";
+        messageDiv.className = "message";
+      });
+    });
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      messageDiv.style.display = "none";
+      messageDiv.textContent = "";
+      messageDiv.className = "message";
+      const inputs = form.querySelectorAll("input, select");
+      inputs.forEach((input) => input.classList.remove("error"));
+
+      let isValid = true;
+
+      inputs.forEach((input) => {
+        if (!input.value.trim()) {
+          input.classList.add("error");
+          isValid = false;
+        }
+      });
+
+      // Validar CI: solo números y longitud 7 a 11
+      const ciInput = document.getElementById("ci");
+      const ciValue = ciInput.value.trim();
+      const ciRegex = /^\d{7,11}$/;
+      if (!ciRegex.test(ciValue)) {
+        ciInput.classList.add("error");
+        isValid = false;
+      }
+
+      if (!isValid) {
+        messageDiv.textContent =
+          "❌ Por favor completa todos los campos correctamente. CI debe tener solo números (7-11 dígitos).";
+        messageDiv.classList.add("error");
+        messageDiv.style.display = "block";
+        return;
+      }
+
+      const data = new FormData(form);
+      const values = Object.fromEntries(data.entries());
+
+      messageDiv.textContent = "⏳ Enviando...";
+      messageDiv.classList.remove("error", "success");
+      messageDiv.style.display = "block";
+      submitButton.disabled = true;
+
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbzIxV3d32DK6aIDMbiPeJp3_UCrWcSAy01jObJ-jYdY5m_s6tF_9xSnXs9EiXDMxGeqdA/exec",
+          {
+            method: "POST",
+            body: new URLSearchParams(values),
+          }
+        );
+
+        const result = await response.json();
+
+        if (result.status === "success") {
+          messageDiv.textContent = "✅ Te esperamos. ¡Nos vemos pronto!";
+          messageDiv.classList.add("success");
+          form.reset();
+          logo.style.display = "none";
+        } else {
+          messageDiv.textContent = "⚠️ Ocurrió un error al enviar el formulario.";
+          messageDiv.classList.add("error");
+        }
+      } catch (error) {
+        messageDiv.textContent = "⚠️ No se pudo conectar con el servidor.";
+        messageDiv.classList.add("error");
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
